@@ -1,5 +1,4 @@
 from django.db import models
-from ckeditor.fields import RichTextField
 # models for media page
 
 
@@ -27,15 +26,18 @@ class Tracks(models.Model):
 # models for lifestyle page
 class Gents(models.Model):
     title = models.CharField(max_length=2000, null=False, blank=False)
-    content = RichTextField()
+    content = models.TextField()
+    date = models.DateField(auto_now_add=True)
 
 
 class Ladies(models.Model):
     title = models.CharField(max_length=2000, null=False, blank=False)
-    content = RichTextField()
+    content = models.TextField()
+    date = models.DateField(auto_now_add=True)
 
 
 # models for technology
 class Technology(models.Model):
     title = models.CharField(max_length=2000, null=False, blank=False)
-    content = RichTextField()
+    content = models.TextField()
+    date = models.DateField(auto_now_add=True)
