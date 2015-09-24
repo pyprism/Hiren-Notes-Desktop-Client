@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^login/$', views.login),
     url(r"^logout$", views.logout),
     url(r"^dashboard$", views.dashboard),
+    url(r"^dashboard/add$", views.add),
 ]
 
 
