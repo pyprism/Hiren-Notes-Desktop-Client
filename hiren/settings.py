@@ -48,7 +48,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'debug_toolbar',
     'pirate',
-    'ckeditor'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -131,9 +130,3 @@ LOGIN_URL = '/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 MEDIA_URL = '/media/'
-
-CKEDITOR_CONFIGS = {
-    'hiren_editor': {
-        'toolbar': 'Basic',
-    },
-}
