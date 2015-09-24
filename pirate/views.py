@@ -29,8 +29,20 @@ def logout(request):
     return redirect("/login")
 
 
+@login_required
 def dashboard(request):
     return render(request, 'admin/dashboard.html')
+
+
+@login_required
+def add(request):
+    if request.method == 'POST':
+        print(request.POST.get('content'))
+        print(request.POST.get('select'))
+        return redirect('/dashboard/add')
+    else:
+        return render(request, 'admin/add.html')
+
 
 
 
