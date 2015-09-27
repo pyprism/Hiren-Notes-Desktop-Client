@@ -57,5 +57,6 @@ docs/_build/
 
 # PyBuilder
 target/
+/config.local.json
 .idea/
 # Created by .ignore support plugin (hsz.mobi)
