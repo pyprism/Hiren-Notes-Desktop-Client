@@ -79,3 +79,16 @@ class Technology(models.Model):
             date.year, date.month, date.day, slugify(self.title)
         )
         super().save()
+
+
+# class Latest(models.Model):
+#     reference = models.IntegerField(null=True, blank=True)
+#     reference_table = models.CharField(max_length=100, null=True, blank=True)
+#
+#     def save(self):
+#         if Latest.objects.counts() == 20:
+#             obj = Latest.objects.order_by('id').first()
+#             obj.delete()
+#         else:
+#             print("less than 20")
+#         super().save()

@@ -1,7 +1,20 @@
-{% extends "base.html" %}
-{% block content %}
-    <!--login modal-->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
+    <title>Hiren: The Bunny</title>
+    {% load staticfiles %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'bower/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bower/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bower/summernote/dist/summernote.css' %}" rel="stylesheet">
+    <link href="{% static 'css/sidebar.css' %}" rel="stylesheet">
+</head>
+<body>
     <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -30,6 +43,5 @@
             </div>
         </div>
     </div>
-{% load staticfiles %}
-<link href="{% static 'css/404.css' %}" rel="stylesheet">
-{% endblock %}
+</body>
+</html>
