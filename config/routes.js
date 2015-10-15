@@ -37,7 +37,7 @@ module.exports.routes = {
   },
 
   'get /login' : {
-    view: 'login'
+    view: 'admin/login'
   },
 
   'post /login': 'AuthController.login',
@@ -45,13 +45,14 @@ module.exports.routes = {
   '/logout': 'AuthController.logout',
 
   'get /signup' : {
-    view: 'signup'
+    view: 'admin/signup'
   },
 
-  'post /user': 'AuthController.signup'
-  //'post /user': function (){
-  //  sails.log.error("Sas")
-  //}
+  'post /user': 'AuthController.signup',
+
+  'get /dashboard': 'PostController.index',
+  'post /dashboard': 'PostController.editor'
+
 
 
   /***************************************************************************
