@@ -25,10 +25,7 @@ module.exports = {
       }
       req.login(user, function(err) {
         if(err) res.send(err);
-        return res.send({
-          message: info.message,
-          user: user
-        });
+        return res.redirect('/dashboard');
       });
     })(req, res);
   },
@@ -39,10 +36,16 @@ module.exports = {
   },
 
   signup: function(req, res) {
-    User.create({email: req.body.email, password:req.body.password}).exec(function createCB(err, data) {
-      console.log(err, data);
-      return res.redirect('/login');
-    })
+    User.count().exec(function countCB(error, found) {
+      if (found >= 1) {
+        return res.redirect('/');
+      } else {
+        User.create({email: req.body.email, password:req.body.password}).exec(function createCB(err, data) {
+          return res.redirect('/login');
+        });
+      }
+    });
+
   }
 
 };
