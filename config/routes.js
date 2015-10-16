@@ -33,7 +33,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
+    view: 'index'
   },
 
   'get /login' : {
@@ -51,7 +51,13 @@ module.exports.routes = {
   'post /user': 'AuthController.signup',
 
   'get /dashboard': 'PostController.index',
-  'post /dashboard': 'PostController.editor'
+  'post /dashboard': 'PostController.editor',
+
+  'get /contact': {
+    view: 'contact'
+  },
+
+  'get /:category/:page': 'ContentController.content',
 
 
 

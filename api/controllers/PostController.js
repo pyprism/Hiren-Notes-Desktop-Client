@@ -7,6 +7,12 @@
 
 module.exports = {
 
+  _config: {
+    actions: false,
+    shortcuts: false,
+    rest: false
+  },
+
   index: function(req, res) {
     res.render('admin/dashboard', {'saved': false});
   },
