@@ -5,17 +5,11 @@ from django.template.defaultfilters import slugify
 
 
 class Content(models.Model):
+    title = models.CharField(max_length=150, unique=True)
     content = models.TextField()
     slug = models.CharField(max_length=150, unique=True)
     date = models.DateField(auto_now_add=True)
-    CATEGORY_CHOICE = (
-        ('MOVIE', 'Movie'),
-        ('SONG', 'Song'),
-        ('LIFESTYLE', 'LifeStyle'),
-        ('TECH', 'Technology')
-    )
-    slug = models.CharField(max_length=150, unique=True)
-    category = models.CharField(choices=CATEGORY_CHOICE, max_length=10)
+    category = models.CharField(max_length=20)
 
     def save(self):
         super().save()
@@ -30,7 +24,7 @@ class Latest(models.Model):
     reference = models.ForeignKey(Content)
 
     def save(self):
-        if Latest.objects.counts() == 20:
+        if Latest.objects.count() == 20:
             obj = Latest.objects.order_by('id').first()
             obj.delete()
         else:
