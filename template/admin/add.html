@@ -1,0 +1,25 @@
+{% extends "admin/admin_base.html" %}
+{% block content %}
+<form class="form col-md-12 center-block" action="/dashboard/add" method="post"> {% csrf_token %}
+    <div class="form-group">
+        <label for="usr">Title:</label>
+        <input type="text" class="form-control" name="title">
+    </div>
+	<div class="form-group">
+        <label for="usr">Content:</label>
+        <textarea name="content" ></textarea>
+    </div>
+    <div class="form-group">
+        <label for="usr">Select Category:</label>
+    <select class="form-control" name="select" required>
+     <option value="MOVIE">Movie</option>
+     <option value="SONG">Song</option>
+     <option value="LIFESTYLE">Lifestyle</option>
+     <option value="TECH">Technology</option>
+    </select>
+   </div>
+    <div class="form-group">
+        <button class="btn btn-primary btn-lg btn-block">Save</button>
+    </div>
+</form>
+{% endblock %}
