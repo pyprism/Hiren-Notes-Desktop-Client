@@ -3,8 +3,8 @@ from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from pirate.models import Content, Latest
+from django.db import IntegrityError
 # Create your views here.
-
 
 
 def index(request):
@@ -39,7 +39,14 @@ def dashboard(request):
 @login_required
 def add(request):
     if request.method == 'POST':
-        Content(title=request.POST.get('title'), content=request.POST.get('content')).save()
+        try:
+            obj = Content(title=request.POST['title'], content=request.POST['content'],
+                      category=request.POST['select'])
+            obj.save()
+            Latest(reference=obj).save()
+        except IntegrityError:
+            messages.error(request, 'Error ! Title is not unique')
+            return redirect(request.path)
         return redirect('/dashboard/add')
     else:
         return render(request, 'admin/add.html')
