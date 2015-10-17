@@ -1,5 +1,10 @@
 {% extends "admin/admin_base.html" %}
 {% block content %}
+     {% if  messages %}
+     {% for message in messages %}
+    <div class="alert alert-danger" role="alert"> {{  message }} </div>
+    {% endfor %}
+    {% endif %}
 <form class="form col-md-12 center-block" action="/dashboard/add" method="post"> {% csrf_token %}
     <div class="form-group">
         <label for="usr">Title:</label>
@@ -12,10 +17,10 @@
     <div class="form-group">
         <label for="usr">Select Category:</label>
     <select class="form-control" name="select" required>
-     <option value="MOVIE">Movie</option>
-     <option value="SONG">Song</option>
-     <option value="LIFESTYLE">Lifestyle</option>
-     <option value="TECH">Technology</option>
+     <option value="movie">Movie</option>
+     <option value="song">Song</option>
+     <option value="lifestyle">Lifestyle</option>
+     <option value="technology">Technology</option>
     </select>
    </div>
     <div class="form-group">
