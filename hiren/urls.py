@@ -21,5 +21,8 @@ urlpatterns = [
     url(r"^logout$", views.logout),
     url(r"^dashboard$", views.dashboard),
     url(r"^dashboard/add$", views.add),
-
+    url(r"^category/(?P<category>[^\.]+)/post/(?P<slug>[^\.]+)/delete", views.content_delete),
+    url(r"^category/(?P<category>[^\.]+)/post/(?P<slug>[^\.]+)/", views.single_content),
+    url(r"^category/(?P<category>[^\.]+)/", views.category_content),
+    url(r"^contact", views.contact),
 ]

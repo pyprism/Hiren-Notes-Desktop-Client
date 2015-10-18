@@ -4,11 +4,12 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from pirate.models import Content, Latest
 from django.db import IntegrityError
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 
 def index(request):
-    return render(request, 'index.html')
+    return redirect('/category/movie')
 
 
 def login(request):
@@ -44,6 +45,7 @@ def add(request):
                       category=request.POST['select'])
             obj.save()
             Latest(reference=obj).save()
+            messages.info(request, 'New post saved :P')
         except IntegrityError:
             messages.error(request, 'Error ! Title is not unique')
             return redirect(request.path)
@@ -51,3 +53,34 @@ def add(request):
     else:
         return render(request, 'admin/add.html')
 
+
+def category_content(request, category):
+    content_list = Content.objects.filter(category=category).order_by('id')
+    paginator = Paginator(content_list, 10)
+
+    page = request.GET.get('page')
+
+    try:
+        contents = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        contents = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        contents = paginator.page(paginator.num_pages)
+    return render(request, 'all_posts.html', {'contents': contents})
+
+
+def single_content(request, category, slug):
+    content = Content.objects.get(slug=slug)
+    return render(request, 'single_post.html', {'content': content})
+
+
+@login_required
+def content_delete(request, category, slug):
+    content = Content.objects.get(slug=slug)
+    content.delete()
+    return redirect('/')
+
+def contact(request):
+    return render(request, 'contact.html')
