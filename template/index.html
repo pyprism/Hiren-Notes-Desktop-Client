@@ -6,11 +6,12 @@
 -->
 <html>
 	<head>
-		<title>Striped by HTML5 UP</title>
+		<title>Site Name</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
         {% load staticfiles %}
 		<link rel="stylesheet" href="{% static 'theme/css/main.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/contact.css' %}" />
     </head>
 	<body>
     <div id="content">
@@ -31,16 +32,18 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li class="current"><a href="#">Latest Post</a></li>
-							<li><a href="#">Archives</a></li>
-							<li><a href="#">About Me</a></li>
-							<li><a href="#">Contact Me</a></li>
+							<li class="current"><a href="/category/movie/">Movies</a></li>
+							<li><a href="/category/song/">Songs</a></li>
+							<li><a href="/category/lifestyle/">Lifestyle</a></li>
+							<li><a href="/category/technology/">Technology</a></li>
+							<li><a href="/contact/">Contact Us</a></li>
 						</ul>
 					</nav>
             </div>
 
 		<!-- Scripts -->
 			<script src="{% static 'theme/js/jquery.min.js' %}"></script>
+			<script src="{% static 'js/contact.js' %}"></script>
 			<script src="{% static 'theme/js/skel.min.js' %}"></script>
 			<script src="{% static 'theme/js/util.js' %}"></script>
 			<script src="{% static 'theme/js/main.js' %}"></script>
