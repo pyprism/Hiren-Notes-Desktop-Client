@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from pirate.models import Content, Latest
+# from pirate.models import Content, Latest
+from pirate.models import Content
 from django.db import IntegrityError
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
@@ -44,7 +45,7 @@ def add(request):
             obj = Content(title=request.POST['title'], content=request.POST['content'],
                       category=request.POST['select'])
             obj.save()
-            Latest(reference=obj).save()
+            # Latest(reference=obj).save()
             messages.info(request, 'New post saved :P')
         except IntegrityError:
             messages.error(request, 'Error ! Title is not unique')
