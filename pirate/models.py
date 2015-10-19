@@ -20,13 +20,13 @@ class Content(models.Model):
         super().save()
 
 
-class Latest(models.Model):
-    reference = models.ForeignKey(Content)
-
-    def save(self):
-        if Latest.objects.count() == 20:
-            obj = Latest.objects.order_by('id').first()
-            obj.delete()
-        else:
-            print("less than 20")
-        super().save()
+# class Latest(models.Model):
+#     reference = models.ForeignKey(Content)
+#
+#     def save(self):
+#         if Latest.objects.count() == 20:
+#             obj = Latest.objects.order_by('id').first()
+#             obj.delete()
+#         else:
+#             print("less than 20")
+#         super().save()
