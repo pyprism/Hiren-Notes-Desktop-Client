@@ -4,7 +4,7 @@ __pycache__/
 .idea/
 # C extensions
 *.so
-
+static/bower/
 # Distribution / packaging
 .Python
 env/
