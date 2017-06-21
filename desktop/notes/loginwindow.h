@@ -2,6 +2,7 @@
 #define LOGINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
 
 namespace Ui {
 class LoginWindow;
@@ -14,6 +15,9 @@ class LoginWindow : public QMainWindow
 public:
     explicit LoginWindow(QWidget *parent = 0);
     ~LoginWindow();
+
+private slots:
+    void on_login_pushButton_clicked();
 
 private:
     Ui::LoginWindow *ui;
