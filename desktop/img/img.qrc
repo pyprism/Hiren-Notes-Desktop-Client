@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/new/img">
+        <file>text_editor.svg</file>
+    </qresource>
+</RCC>
