@@ -9,10 +9,12 @@ LoginWindow::LoginWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->password_lineEdit->setEchoMode(QLineEdit::Password);
     ui->encrytion_lineEdit->setEchoMode(QLineEdit::Password);
+    ui->login_pushButton->setIcon (QIcon(":/new/img/login.svg"));
     this->setWindowTitle ("Login");
 
-    //QSettings settings;
-    //ui->server_lineEdit->setText (settings.value ("url"));
+    QSettings settings;
+    ui->server_lineEdit->setText (QVariant(settings.value ("url")).toString ());
+    ui->username_lineEdit->setText (QVariant(settings.value ("username")).toString ());
 }
 
 LoginWindow::~LoginWindow()
@@ -23,7 +25,6 @@ LoginWindow::~LoginWindow()
 void LoginWindow::on_login_pushButton_clicked()
 {
     QSettings settings;
-    qDebug() <<  settings.value ("url", "");
     const QString url = ui->server_lineEdit->text ();
     const QString username = ui->username_lineEdit->text ();
     const QString password = ui->password_lineEdit->text ();
