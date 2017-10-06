@@ -1,6 +1,12 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
 #include <QDebug>
+#include <QNetworkRequest>
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QUrlQuery>
+#include <QUrl>
+
 
 LoginWindow::LoginWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -31,4 +37,28 @@ void LoginWindow::on_login_pushButton_clicked()
     const QString encrytion = ui->encrytion_lineEdit->text ();
     settings.setValue ("url", url);
     settings.setValue ("username", username);
+
+    QNetworkAccessManager mAccessManager;
+    QNetworkRequest request(QUrl(url + "/api/auth/"));
+
+    QUrlQuery urlQuery;
+    urlQuery.addQueryItem ("username", username);
+    urlQuery.addQueryItem ("password", password);
+
+    QUrl params;
+    params.setQuery (urlQuery);
+
+    QNetworkReply* reply = mAccessManager.post (request, params.toEncoded ());
+
+    connect (reply, &QNetworkReply::readyRead, [reply]() {
+        qDebug()  << "Ready to read from reply";
+    });
+    connect (reply, &QNetworkReply::sslErrors, [this] (QList<QSslError> error) {
+        qWarning () << "Ssl error: " << error;
+    });
+
 }
+
+
+
+
