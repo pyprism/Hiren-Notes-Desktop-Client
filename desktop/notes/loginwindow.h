@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include <QSettings>
 
+class QByteArray;
+class QNetworkAccessManager;
+class QNetworkReply;
+
 namespace Ui {
 class LoginWindow;
 }
@@ -16,11 +20,18 @@ public:
     explicit LoginWindow(QWidget *parent = 0);
     ~LoginWindow();
 
+    void BuildLogin();
 private slots:
     void on_login_pushButton_clicked();
+    void OnResponseReadyToRead();
+    void OnResponseReadFinished();
 
 private:
     Ui::LoginWindow *ui;
+    void NetworkCleanup();
+    QNetworkAccessManager * mNetMan;
+    QNetworkReply * mNetReply;
+    QByteArray * mDataBuffer;
 };
 
 #endif // LOGINWINDOW_H
