@@ -29,16 +29,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        loginwindow.cpp \
-    noteslist.cpp
+        loginwindow.cpp
 
 HEADERS += \
-        loginwindow.h \
-    noteslist.h
+        loginwindow.h
 
 FORMS += \
-        loginwindow.ui \
-    noteslist.ui
-
+        loginwindow.ui
 RESOURCES += \
     ../img/img.qrc
